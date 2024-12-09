@@ -1,5 +1,5 @@
 # LOG
-This repository contains code for the paper "LOG: A Local-to-Global Optimization Approach for Retrieval-based Multi-Hop Question Answering". 
+This repository contains code for the paper "LOG: A Local-to-Global Optimization Approach for Retrieval-based Explainable Multi-Hop Question Answering". 
 
 To run our code, you will first need to download the dataset files in the raw format. 
 Note that officially released data and what we have used here are only different in the format (e.g. uses different names for json fields), and are not qualitatively different. 
@@ -43,4 +43,23 @@ You can use evaluate_v1.0.py to evaluate your predictions against ground-truths.
 - scikit_learn==1.3.2
 - protobuf==5.27.1
 - transformers==4.7.0
+
+## Citation
+Please kindly cite our paper if the work is helpful.
+```bibtex
+@inproceedings{xu-etal-2025-log,
+    title = "{LOG}: A Local-to-Global Optimization Approach for Retrieval-based Explainable Multi-Hop Question Answering",
+    author = "Xu, Hao  and
+      Zhao, Yunxiao and
+      Zhang, Jiayang and 
+      Wang, Zhiqiang  and
+      Li, Ru",
+    booktitle = "Proceedings of the 31st International Conference on Computational Linguistics (COLING 2025)",
+    year = "2025"
+}
+```
+
+## Acknowledgement
+
+The code is largely based on [MusiQue](https://github.com/stonybrooknlp/musique). We appreciate their contributions to the community.
 
