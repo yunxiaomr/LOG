@@ -56,13 +56,16 @@ Please kindly cite our paper if the work is helpful.
 ```bibtex
 @inproceedings{xu-etal-2025-log,
     title = "{LOG}: A Local-to-Global Optimization Approach for Retrieval-based Explainable Multi-Hop Question Answering",
-    author = "Xu, Hao  and
+    author = "Xu, Hao  and 
       Zhao, Yunxiao and
       Zhang, Jiayang and 
       Wang, Zhiqiang  and
       Li, Ru",
     booktitle = "Proceedings of the 31st International Conference on Computational Linguistics (COLING 2025)",
-    year = "2025"
+    year = "2025",
+    address = "Abu Dhabi, UAE",
+    publisher = "International Committee on Computational Linguistics",
+    abstract = "Multi-hop question answering (MHQA) aims to utilize multi-source intensive documents retrieved to derive the answer. However, it is very challenging to model the importance of knowledge retrieved. Previous approaches primarily emphasize single-step and multi-step iterative decomposition or retrieval, which are susceptible to failure in long-chain reasoning due to the progressive accumulation of erroneous information. To address this problem, we propose a novel \textbf{L}ocal-t\textbf{O}-\textbf{G}lobal optimized retrieval method ($\mathcal{LOG}$) to discover more beneficial information, facilitating the MHQA. In particular, we design a pointwise conditional $\mathcal{V}$-information based local information modeling to cover usable documents with reasoning knowledge. We also improve tuplet objective loss, advancing multi-examples-aware global optimization to model the relationship between scattered documents. Extensive experimental results demonstrate our proposed method outperforms prior state-of-the-art models, and it can significantly improve multi-hop reasoning, notably for long-chain reasoning. "
 }
 ```
 
