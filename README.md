@@ -6,7 +6,7 @@ Note that officially released data and what we have used here are only different
 Take a look at raw_data_to_official_format.py if you're interested. 
 
 ## Environments
-&emsp;&emsp;  python 3.8. 
+python 3.8. 
 We suggest you to create a virtual environment with: conda create -n LOG python=3.8.19
 Then activate the environment with: conda activate LOG
 Install packages: pip install -r requirements.txt
