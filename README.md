@@ -1,7 +1,7 @@
 # LOG
 This repository contains code for the paper "LOG: A Local-to-Global Optimization Approach for Retrieval-based Explainable Multi-Hop Question Answering". 
 
-# Data
+## Data
 To run our code, you will first need to download the dataset files in the raw format. 
 
 ```bash
