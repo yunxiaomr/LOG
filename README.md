@@ -39,6 +39,15 @@ pip uninstall -y transformers
 pip install transformers==4.7.0 
 ```
 
+## Dependencies
+- torch==1.7.1
+- allennlp==2.1.0
+- numpy==1.23.0
+- pandas==2.0.3
+- scikit_learn==1.3.2
+- protobuf==5.27.1
+- transformers==4.7.0
+
 ## Train example
 ### Retrieval Model
 ```
@@ -79,19 +88,15 @@ python run.py predict serialization_dir/select_and_answer_model_answerer_for_mus
 
 ## Result  
 You will get the result files at last. If you want to convert predictions to the official format, run:
-            	python raw_predictions_to_official_format.py serialization_dir/select_and_answer_model_answerer_for_musique_ans/predictions/serialization_dir__select_and_answer_model_selector_for_musique_ans__predictions__musique_ans_dev.jsonl
 
+```bash
+python raw_predictions_to_official_format.py serialization_dir/select_and_answer_model_answerer_for_musique_ans/predictions/serialization_dir__select_and_answer_model_selector_for_musique_ans__predictions__musique_ans_dev.jsonl
+```
 You can use evaluate_v1.0.py to evaluate your predictions against ground-truths. For eg.:
-            	python evaluate_v1.0.py predictions/musique_ans_v1.0_dev_end2end_model_predictions.jsonl data/musique_ans_v1.0_dev.jsonl
 
-## Dependencies
-- torch==1.7.1
-- allennlp==2.1.0
-- numpy==1.23.0
-- pandas==2.0.3
-- scikit_learn==1.3.2
-- protobuf==5.27.1
-- transformers==4.7.0
+```bash
+python evaluate_v1.0.py predictions/musique_ans_v1.0_dev_end2end_model_predictions.jsonl data/musique_ans_v1.0_dev.jsonl
+```
 
 ## Citation
 Please kindly cite our paper if the work is helpful.
