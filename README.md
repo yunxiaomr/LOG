@@ -1,7 +1,12 @@
 # LOG
 This repository contains code for the paper "LOG: A Local-to-Global Optimization Approach for Retrieval-based Explainable Multi-Hop Question Answering". 
 
+# Data
 To run our code, you will first need to download the dataset files in the raw format. 
+
+```bash
+python download_raw_data.py
+```
 Note that officially released data and what we have used here are only different in the format (e.g. uses different names for json fields), and are not qualitatively different. 
 Take a look at raw_data_to_official_format.py if you're interested. 
 
@@ -14,7 +19,27 @@ Then activate the environment with: conda activate LOG
 
 Install packages: pip install -r requirements.txt
 
-## Running example
+Follow the steps below.
+
+```bash
+
+git clone https://github.com/allenai/allennlp
+cd allennlp
+git checkout v2.1.0
+git apply ../allennlp.diff 
+cd ..
+
+pip install allennlp==2.1.0 
+pip uninstall -y allennlp
+
+pip install gdown==v4.5.1
+python -m nltk.downloader stopwords
+
+pip uninstall -y transformers
+pip install transformers==4.7.0 
+```
+
+## Train example
 ### Retrieval Model
 ```
 python run.py train experiment_configs/select_and_answer_model_selector_for_musique_ans.jsonnet \
@@ -30,6 +55,23 @@ python run.py train experiment_configs/select_and_answer_model_selector_for_musi
 python run.py train experiment_configs/select_and_answer_model_answerer_for_musique_ans.jsonnet \
                     --serialization-dir serialization_dir/select_and_answer_model_answerer_for_musique_ans
             	      python run.py predict serialization_dir/select_and_answer_model_answerer_for_musique_ans/model.tar.gz \
+                      serialization_dir/select_and_answer_model_selector_for_musique_ans/predictions/musique_ans_dev.jsonl \
+                      --output-file serialization_dir/select_and_answer_model_answerer_for_musique_ans/predictions/serialization_dir__select_and_answer_model_selector_for_musique_ans__predictions__musique_ans_dev.jsonl \
+                      --predictor transformer_rc --batch-size 16 --cuda-device 0 --silent
+```
+
+## Predict example
+### Retrieval Model
+```
+python run.py predict serialization_dir/select_and_answer_model_selector_for_musique_ans/model.tar.gz \
+                      raw_data/musique_ans_dev.jsonl \
+                      --output-file serialization_dir/select_and_answer_model_selector_for_musique_ans/predictions/musique_ans_dev.jsonl \
+                      --predictor inplace_text_ranker --batch-size 16 --cuda-device 0 --silent
+```
+
+### Reader Model
+```
+python run.py predict serialization_dir/select_and_answer_model_answerer_for_musique_ans/model.tar.gz \
                       serialization_dir/select_and_answer_model_selector_for_musique_ans/predictions/musique_ans_dev.jsonl \
                       --output-file serialization_dir/select_and_answer_model_answerer_for_musique_ans/predictions/serialization_dir__select_and_answer_model_selector_for_musique_ans__predictions__musique_ans_dev.jsonl \
                       --predictor transformer_rc --batch-size 16 --cuda-device 0 --silent
