@@ -7,26 +7,33 @@ Take a look at raw_data_to_official_format.py if you're interested.
 
 ## Environments
 python 3.8. 
+
 We suggest you to create a virtual environment with: conda create -n LOG python=3.8.19
+
 Then activate the environment with: conda activate LOG
+
 Install packages: pip install -r requirements.txt
 
 ## Running example
 ### Retrieval Model
+```
 python run.py train experiment_configs/select_and_answer_model_selector_for_musique_ans.jsonnet \
                     --serialization-dir serialization_dir/select_and_answer_model_selector_for_musique_ans
             	       python run.py predict serialization_dir/select_and_answer_model_selector_for_musique_ans/model.tar.gz \
                       raw_data/musique_ans_dev.jsonl \
                       --output-file serialization_dir/select_and_answer_model_selector_for_musique_ans/predictions/musique_ans_dev.jsonl \
                       --predictor inplace_text_ranker --batch-size 16 --cuda-device 0 --silent
+```
 
 ### Reader Model
+```
 python run.py train experiment_configs/select_and_answer_model_answerer_for_musique_ans.jsonnet \
                     --serialization-dir serialization_dir/select_and_answer_model_answerer_for_musique_ans
             	      python run.py predict serialization_dir/select_and_answer_model_answerer_for_musique_ans/model.tar.gz \
                       serialization_dir/select_and_answer_model_selector_for_musique_ans/predictions/musique_ans_dev.jsonl \
                       --output-file serialization_dir/select_and_answer_model_answerer_for_musique_ans/predictions/serialization_dir__select_and_answer_model_selector_for_musique_ans__predictions__musique_ans_dev.jsonl \
                       --predictor transformer_rc --batch-size 16 --cuda-device 0 --silent
+```
 
 ## Result  
 You will get the result files at last. If you want to convert predictions to the official format, run:
