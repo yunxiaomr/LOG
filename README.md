@@ -118,5 +118,5 @@ Please kindly cite our paper if the work is helpful.
 
 ## Acknowledgement
 
-The code is largely based on [MusiQue](https://github.com/stonybrooknlp/musique). We appreciate their contributions to the community.
+We refer to the code of [MusiQue](https://github.com/stonybrooknlp/musique). We appreciate their contributions to the community.
 
